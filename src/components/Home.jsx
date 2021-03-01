@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Card from "./card";
+import BuyForm from "./BuyForm";
 import btc from '../assets/bitcoin.svg';
 import eth from '../assets/ethereum.svg';
 import xem from '../assets/xem.jpg';
@@ -19,6 +20,7 @@ const Home = () => {
         setSelectedState(data);
     }
 
+
   return (
     <div className="container">
       <div className="row">
@@ -33,7 +35,8 @@ const Home = () => {
                         onClick={handleSelect} />
                     ))
                 }
-            </div>            
+            </div>
+            <BuyForm data={selectedCard}/>            
         </div>
         <div className="col-6">col 2</div>
       </div>
