@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import Card from "./card";
 import BuyForm from "./BuyForm";
+import Transactions from "./Transactions";
+
 import btc from '../assets/bitcoin.svg';
 import eth from '../assets/ethereum.svg';
 import xem from '../assets/xem.jpg';
@@ -15,11 +17,15 @@ const Home = () => {
     ];
 
     const [selectedCard, setSelectedState] = useState(cards[0]);
+    const [list, setList] = useState([]);
 
     const handleSelect = (data) => {
         setSelectedState(data);
     }
 
+    const buildList = (list) => {
+        setList(list);
+    }
 
   return (
     <div className="container">
@@ -36,9 +42,11 @@ const Home = () => {
                     ))
                 }
             </div>
-            <BuyForm data={selectedCard}/>            
+            <BuyForm data={selectedCard} onPurchase={buildList} />            
         </div>
-        <div className="col-6">col 2</div>
+        <div className="col-6">
+          <Transactions list={list} />
+        </div>
       </div>
     </div>
   );
